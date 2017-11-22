@@ -1,10 +1,11 @@
 package textdistance
 
-import "math"
+import "unsafe"
 
 // Min returns the minimum number of passed int slices.
 func Min(is ...int) int {
-	min := int(math.MaxInt64)
+	var i int
+	min := int(1<<(unsafe.Sizeof(i)*8-1) - 1)
 	for _, v := range is {
 		if min > v {
 			min = v
